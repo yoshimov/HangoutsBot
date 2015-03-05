@@ -19,6 +19,11 @@ class CommandDispatcher(object):
         self.commands = {}
         self.hidden_commands = {}
         self.unknown_command = None
+        self.inits = []
+
+    def runinit(self, bot):
+       for func in self.inits:
+         func(bot)
 
     @asyncio.coroutine
     def run(self, bot, event, *args, **kwds):
@@ -60,6 +65,10 @@ class CommandDispatcher(object):
 
     def register_unknown(self, func):
         self.unknown_command = func
+        return func
+
+    def init(self, func):
+        self.inits.append(func)
         return func
 
 # CommandDispatcher singleton

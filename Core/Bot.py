@@ -295,6 +295,7 @@ class HangoutsBot(object):
         for c in self.list_conversations():
             print('  {} ({})'.format(get_conv_name(c, truncate=True), c.id_))
         print()
+        DispatcherSingleton.runinit(self)
 
     def _on_event(self, conv_event):
         """Handle conversation events"""
