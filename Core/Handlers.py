@@ -17,6 +17,7 @@ class MessageHandler(object):
     def __init__(self, bot, bot_command='/'):
         self.bot = bot
         self.bot_command = bot_command
+        DispatcherSingleton.run_init(self.bot)
 
     @staticmethod
     def word_in_text(word, text):

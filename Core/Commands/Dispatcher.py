@@ -21,7 +21,7 @@ class CommandDispatcher(object):
         self.unknown_command = None
         self.inits = []
 
-    def runinit(self, bot):
+    def run_init(self, bot):
        for func in self.inits:
          func(bot)
 
@@ -67,7 +67,7 @@ class CommandDispatcher(object):
         self.unknown_command = func
         return func
 
-    def init(self, func):
+    def register_init(self, func):
         self.inits.append(func)
         return func
 
